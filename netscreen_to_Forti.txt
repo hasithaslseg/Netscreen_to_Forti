@@ -1,0 +1,29 @@
+import pandas as pd
+from pandas import ExcelWriter
+from pandas import ExcelFile
+
+cols = [21]
+filename = "full_address_list.csv"
+df = pd.read_csv(filename, header=None)
+df.columns = ["col1", "col2", "col3"]
+
+filename1 = "address_group_elements.csv"
+df1 = pd.read_csv(filename1, header=None)
+df1.columns = ["col11"]
+a=1
+for index, raw in df1.iterrows():
+    address = str(raw['col11'])
+    for index1, raw1 in df.iterrows():
+        customer = str(raw1['col1'])
+        prefix = str(raw1['col2'])
+        mask = str(raw1['col3'])
+        if address == customer:
+            with open('address.txt', 'a') as f:
+                print('edit "%s"' % customer, file=f)
+                print('set subnet %s %s' % (prefix, mask), file=f)
+                print('next', file=f)
+            with open ('addrgrp.txt','a') as g:
+                print('"%s"' % customer, end=" ", file=g)
+                a = a+1
+print(a)
+
