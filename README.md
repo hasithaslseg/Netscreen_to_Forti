@@ -21,7 +21,7 @@ h_Active_Financial_10.22.25.128/25
 h_Aletti_10.78.134.88/29
 
 Step3: Run the code.
-This will check the required 
+The code will loof for the address names in step 2 from the list of all addresses in netscreen format and develop the related fortigate configuration
 
 
 
